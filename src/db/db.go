@@ -12,11 +12,11 @@ import (
 
 // Database base type struct
 type Database struct {
-	*mongo.Client
+	mongo *mongo.Database
 }
 
-// New new mongodb database instanse
-func New(config *Config) (*Database, error) {
+// NewMongoDB generates a new mongodb database connection
+func NewMongoDB(config *Config) (*mongo.Database, error) {
 	// Set client options
 	clientOptions := options.Client().ApplyURI(config.DatabaseURI)
 
@@ -25,9 +25,10 @@ func New(config *Config) (*Database, error) {
 
 	// Connect to MongoDB
 	client, err := mongo.Connect(ctx, clientOptions)
+	oojob := client.Database("test")
 
 	if err != nil {
-		return nil, errors.Wrap(err, "unable to connect to database")
+		return nil, errors.Wrap(err, "unable to connect to MongoDB database")
 	}
 
 	// Check the connection
@@ -36,5 +37,24 @@ func New(config *Config) (*Database, error) {
 		return nil, errors.Wrap(err, "unable to connect to database")
 	}
 
-	return &Database{client}, nil
+	return oojob, err
+}
+
+// New new mongodb database instanse
+func New(config *Config) (*Database, error) {
+	oojobMongo, err := NewMongoDB(config)
+	if err != nil {
+		return nil, errors.Wrap(err, "database initialization error")
+	}
+
+	return &Database{
+		mongo: oojobMongo,
+	}, nil
+}
+
+// Close :- close all database active connection
+func (db *Database) Close() error {
+	err := db.mongo.Client().Disconnect(context.Background())
+
+	return err
 }
