@@ -10,6 +10,22 @@
   version = "v1.4.9"
 
 [[projects]]
+  digest = "1:e17320223c7c866dfbec405efe8abc8e383ccad131fb76ca7ff70580dafb9067"
+  name = "github.com/go-redis/redis"
+  packages = [
+    ".",
+    "internal",
+    "internal/consistenthash",
+    "internal/hashtag",
+    "internal/pool",
+    "internal/proto",
+    "internal/util",
+  ]
+  pruneopts = "UT"
+  revision = "99cd690a7019656b0b67c6664453f27a6d8a658e"
+  version = "v6.15.7"
+
+[[projects]]
   digest = "1:586ea76dbd0374d6fb649a91d70d652b7fe0ccffb8910a77468e7702e7901f3d"
   name = "github.com/go-stack/stack"
   packages = ["."]
@@ -128,25 +144,11 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:3a8a0338f40926b7c9fd44de47179f833dccebb2e04a3bf3235db1a43b3896d9"
-  name = "github.com/oojob/protorepo-company-go"
+  digest = "1:5219524e3a848d8d046b2fe5440dcdd9f088951309b4400bc4af6db20b3ddfb9"
+  name = "github.com/oojob/protorepo-job-go"
   packages = ["."]
   pruneopts = "UT"
-  revision = "00faeb780ef4eb9a801fc3104a4ec342269e4447"
-
-[[projects]]
-  branch = "master"
-  digest = "1:b55731606e70ae4064f2b284123e0dd2cd427c8e4b1029c7bc04d9ba215b0384"
-  name = "github.com/oojob/service-company"
-  packages = [
-    "src/api",
-    "src/app",
-    "src/cmd",
-    "src/db",
-    "src/model",
-  ]
-  pruneopts = "UT"
-  revision = "24a7da8c8f6ed59b372b0e4396dafe045414d906"
+  revision = "6ec525bc74750f61c7acf05281aedd96a168c843"
 
 [[projects]]
   digest = "1:53aab5f59edb1cd47773bbbb5b1b6d0b76b0c9e31cfac670a0bb7ccc917e98a3"
@@ -192,12 +194,12 @@
   version = "v1.3.1"
 
 [[projects]]
-  digest = "1:1e80255eea46af2e2db7da90f95e4b5cfe84f3b58d9a8598ec35b0f2a75c60e4"
+  digest = "1:f6adcf4df6c030a53a14a8fdbb3fade7cac3d014ff78a4e0de500b4c0cf5154f"
   name = "github.com/spf13/cobra"
   packages = ["."]
   pruneopts = "UT"
-  revision = "6607e6b8603f56adb027298ee6695e06ffb3a819"
-  version = "0.0.7"
+  revision = "a684a6d7f5e37385d954dd3b5a14fc6912c6ab9d"
+  version = "v1.0.0"
 
 [[projects]]
   digest = "1:1b753ec16506f5864d26a28b43703c58831255059644351bbcb019b843950900"
@@ -297,7 +299,7 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:9a5e0d8b79838ca01a0ef5d66281bf640cdb54833d0bc735324694fddb0688c0"
+  digest = "1:bd0b162831e9b17ed1e5dc2ee121f939df7797160505103ea0e5c35ca2362543"
   name = "golang.org/x/net"
   packages = [
     "http/httpguts",
@@ -308,7 +310,7 @@
     "trace",
   ]
   pruneopts = "UT"
-  revision = "59133d7f0dd7cb4ec46ee7b17b1b71cff79e0309"
+  revision = "0ba52f642ac2f9371a88bfdde41f4b4e195a37c0"
 
 [[projects]]
   branch = "master"
@@ -473,13 +475,29 @@
   analyzer-name = "dep"
   analyzer-version = 1
   input-imports = [
-    "github.com/oojob/service-company/src/cmd",
+    "github.com/go-redis/redis",
+    "github.com/golang/protobuf/ptypes",
+    "github.com/golang/protobuf/ptypes/timestamp",
+    "github.com/grpc-ecosystem/go-grpc-middleware",
+    "github.com/grpc-ecosystem/go-grpc-middleware/ratelimit",
+    "github.com/grpc-ecosystem/go-grpc-middleware/recovery",
+    "github.com/grpc-ecosystem/go-grpc-middleware/tags",
+    "github.com/oojob/protobuf",
+    "github.com/oojob/protorepo-job-go",
     "github.com/pkg/errors",
+    "github.com/sirupsen/logrus",
     "github.com/spf13/cobra",
     "github.com/spf13/viper",
+    "go.mongodb.org/mongo-driver/bson/primitive",
     "go.mongodb.org/mongo-driver/mongo",
     "go.mongodb.org/mongo-driver/mongo/options",
     "go.mongodb.org/mongo-driver/mongo/readpref",
+    "google.golang.org/grpc",
+    "google.golang.org/grpc/codes",
+    "google.golang.org/grpc/encoding/gzip",
+    "google.golang.org/grpc/keepalive",
+    "google.golang.org/grpc/reflection",
+    "google.golang.org/grpc/status",
   ]
   solver-name = "gps-cdcl"
   solver-version = 1

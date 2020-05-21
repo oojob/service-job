@@ -32,3 +32,12 @@
 [[constraint]]
   branch = "master"
   name = "github.com/oojob/protorepo-job-go"
+
+[[constraint]]
+  name = "github.com/go-redis/redis"
+  version = "6.15.7"
+
+[[constraint]]
+  branch = "master"
+  name = "github.com/oojob/protobuf"
+
